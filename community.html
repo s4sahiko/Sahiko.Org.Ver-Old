@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" href="/sahiko.org/assets/android-chrome-512x512.png" type="image/x-icon">
+  <link rel="icon" href="/assets/android-chrome-512x512.png" type="image/x-icon">
   <title>Community | Sahiko Community</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
 
   <!-- ===== NAVBAR ===== -->
   <header class="navbar">
     <div class="container nav-inner">
       <div class="logo">
-        <a href="index.html"><img src="/sahiko.org/assets/sahiko-removebg-preview.png" alt="Logo" class="logo-img" width="100" height="100"/></a>
+        <a href="index.html"><img src="/assets/sahiko-removebg-preview.png" alt="Logo" class="logo-img" width="100"
+            height="100" /></a>
       </div>
       <button class="nav-toggle" aria-label="Toggle navigation"><span class="hamburger"></span></button>
       <nav class="nav-links">
@@ -34,8 +37,12 @@
   <!-- ===== COMMUNITY HERO ===== -->
   <section class="intro">
     <div class="container intro-content">
-      <h1>Welcome to <span>Sahiko Community</span></h1>
-      <p>Collaborate, learn, and grow with cybersecurity enthusiasts across the globe.</p>
+      <h1 class="hero-title">
+        <span style="color: white;">Welcome to</span> <span>Sahiko Community</span>
+      </h1>
+      <p data-animate class="delay-1">
+        Collaborate, learn, and grow with cybersecurity enthusiasts across the globe.
+      </p>
     </div>
   </section>
 
@@ -43,20 +50,21 @@
   <section class="about">
     <div class="container">
       <h2>Meet the Community</h2>
-      <p class="about-intro">Our community brings together cybersecurity learners, ethical hackers, and professionals. Join us to share insights, discuss vulnerabilities, and build solutions together.</p>
+      <p class="about-intro">Our community brings together cybersecurity learners, ethical hackers, and professionals.
+        Join us to share insights, discuss vulnerabilities, and build solutions together.</p>
 
       <div class="about-grid">
-        <div class="about-card">
+        <div class="about-card" data-animate="left"  class="delay-1">
           <img src="https://cdn-icons-png.flaticon.com/512/1688/1688400.png" alt="Forums" />
           <h3>Cyber Forums</h3>
           <p>Engage in deep discussions about threat analysis, CTFs, and emerging security tools.</p>
         </div>
-        <div class="about-card">
+        <div class="about-card" data-animate="left"  class="delay-2">
           <img src="https://cdn-icons-png.flaticon.com/512/860/860813.png" alt="Events" />
           <h3>Workshops & Events</h3>
           <p>Participate in our regular online meetups, hackathons, and cybersecurity summits.</p>
         </div>
-        <div class="about-card">
+        <div class="about-card" data-animate="left"  class="delay-3">
           <img src="https://cdn-icons-png.flaticon.com/512/1106/1106838.png" alt="Projects" />
           <h3>Community Projects</h3>
           <p>Contribute to open-source cybersecurity tools, vulnerability research, and awareness programs.</p>
@@ -82,4 +90,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>

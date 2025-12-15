@@ -59,3 +59,28 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+
+/* ===== SAHIKO SCROLL ANIMATION OBSERVER ===== */
+const animatedEls = document.querySelectorAll("[data-animate]");
+
+const sahikoObserver = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in-view");
+        sahikoObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.18 }
+);
+
+animatedEls.forEach(el => sahikoObserver.observe(el));
+// Parallax depth effect
+window.addEventListener("scroll", () => {
+  const scrolled = window.scrollY;
+  document.querySelectorAll(".intro, .lessons-hero").forEach(el => {
+    el.style.transform = `translateY(${scrolled * 0.04}px)`;
+  });
+});
