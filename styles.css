@@ -1,0 +1,959 @@
+/* STYLES */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: #0b0c10;
+  color: #eaeaea;
+  overflow-x: hidden;
+}
+
+/* Keep navbar fixed to the top */
+.navbar {
+  top: 0;
+  left: 0;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* NAVBAR */
+.navbar {
+  background: #10131a;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+}
+
+.nav-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* NAV: responsive behaviour */
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-left: 8px;
+}
+
+.nav-toggle .hamburger,
+.nav-toggle .hamburger::before,
+.nav-toggle .hamburger::after {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #eaeaea;
+  border-radius: 2px;
+  position: relative;
+}
+
+.nav-toggle .hamburger::before,
+.nav-toggle .hamburger::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.nav-toggle .hamburger::before {
+  top: -7px;
+}
+
+.nav-toggle .hamburger::after {
+  top: 7px;
+}
+
+/* Mobile menu layout */
+@media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background: #0f1317;
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    padding: 18px 12px;
+    z-index: 200;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .nav-inner.menu-open .nav-links {
+    display: flex;
+  }
+
+  .nav-links ul {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .nav-links a {
+    padding: 10px 6px;
+    display: block;
+  }
+
+  /* Hide auth buttons near the toggle by default on mobile; show when menu opens
+    but keep auth visible on auth pages (login/signup) so user can access them. */
+  .nav-auth {
+    display: none;
+  }
+
+  .nav-inner.menu-open .nav-auth {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  /* Ensure nav auth is visible on auth pages (login/signup) even on mobile */
+  .auth-page .nav-auth {
+    display: flex !important;
+  }
+
+  .nav-auth .btn {
+    margin-left: 0;
+  }
+
+  /* When menu opens on mobile we want to show only the login button in the header */
+  .nav-auth.hide-signup .btn {
+    display: none;
+  }
+
+  .nav-auth.hide-signup .login-btn {
+    display: inline-block;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-inner {
+    height: 70px;
+  }
+
+  /* Reduce hero paddings on small screens */
+  .intro {
+    padding: 100px 0 60px;
+  }
+
+  .intro h1 {
+    font-size: 2rem;
+  }
+
+  .intro p {
+    font-size: 1rem;
+  }
+
+  .about {
+    padding: 60px 0;
+  }
+
+  .gallery {
+    padding: 60px 0;
+  }
+
+  /* Lessons / products responsiveness */
+  .lessons-hero {
+    padding: 100px 0 60px;
+  }
+
+  .lessons-section {
+    padding: 60px 0;
+  }
+}
+
+/* Login page specific adjustments on small screens only */
+@media (max-width: 768px) {
+  .auth-page .auth-container {
+    /* keep auth pages vertically centered while accounting for the fixed header (mobile header height = 70px) */
+    min-height: calc(100vh - 70px);
+    padding-top: 0;
+  }
+}
+
+/* Images & media tweaks */
+.gallery-img {
+  height: 220px;
+  object-fit: cover;
+}
+
+.lesson-card img,
+.about-card img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Small helpers */
+.container {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.nav-links ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #00b4d8;
+}
+
+.nav-auth .btn {
+  border: 1px solid #00b4d8;
+  padding: 7px 14px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #fff;
+  margin-left: 10px;
+  transition: all 0.3s;
+}
+
+.nav-auth .btn:hover {
+  background: #00b4d8;
+  color: #000;
+}
+
+.nav-auth .btn.primary {
+  background: #00b4d8;
+  color: #000;
+}
+
+/* INTRO */
+.intro {
+  text-align: center;
+  padding: 140px 0 100px;
+  background: linear-gradient(135deg, #0b0c10 0%, #1f2833 100%);
+}
+
+.intro h1 {
+  font-size: 2.8rem;
+  color: #fff;
+}
+
+.intro h1 span {
+  color: #00b4d8;
+}
+
+.intro p {
+  margin: 20px auto;
+  font-size: 1.1rem;
+  max-width: 700px;
+  color: #bbb;
+}
+
+.intro .btn {
+  background: #00b4d8;
+  padding: 10px 20px;
+  border-radius: 8px;
+  color: #000;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Minimal header layout for auth pages (logo left, heading centered) */
+.minimal-header .nav-inner {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  /* center heading */
+  align-items: center;
+  height: 80px;
+  /* match main header height */
+  padding: 0 8px;
+}
+
+.minimal-header .logo {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.minimal-header .logo-img {
+  width: 100px;
+  /* match index logo width */
+  height: auto;
+  display: block;
+}
+
+.minimal-header .heading {
+  font-size: 1.6rem;
+  color: #00b4d8;
+  margin: 0;
+  line-height: 1;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .minimal-header .nav-inner {
+    height: 70px;
+    padding: 10px 6px;
+  }
+
+  .minimal-header .logo-img {
+    width: 72px;
+  }
+
+  .minimal-header .heading {
+    font-size: 1.2rem;
+  }
+}
+
+/* ABOUT US SECTION */
+.about {
+  background: #10131a;
+  padding: 100px 0;
+  text-align: center;
+}
+
+.about h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #00b4d8;
+}
+
+.about-intro {
+  max-width: 700px;
+  margin: 0 auto 50px;
+  color: #aaa;
+}
+
+.about-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.about-card {
+  background: #1f2833;
+  border: 1px solid #00b4d8;
+  padding: 30px;
+  border-radius: 10px;
+  width: 300px;
+  transition: transform 0.3s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-10px);
+}
+
+.about-card img {
+  width: 60px;
+  margin-bottom: 15px;
+}
+
+.about-card h3 {
+  color: #00b4d8;
+  margin-bottom: 10px;
+}
+
+/* GALLERY */
+.gallery {
+  background: #0b0c10;
+  padding: 100px 0;
+  text-align: center;
+}
+
+.gallery h2 {
+  color: #00b4d8;
+  margin-bottom: 40px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.gallery-img {
+  width: 100%;
+  border-radius: 8px;
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+}
+
+.gallery-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #00b4d8;
+}
+
+/* community.html */
+.contact-footer {
+  background: linear-gradient(135deg, #0b0c10 0%, #1f2833 100%);
+  text-align: center;
+  padding: 80px 20px;
+  color: #aaa;
+  border-top: 1px solid #1f2833;
+}
+
+.contact-footer h2 {
+  color: #00b4d8;
+  margin-bottom: 18px;
+}
+
+/* contact.html */
+.contact-page-body {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.contact-hero {
+  position: relative;
+  background: url("https://c0.wallpaperflare.com/preview/1021/163/815/technology-networking-abstract-business.jpg") center/cover no-repeat;
+  color: #fff;
+  text-align: center;
+  padding: 160px 20px 100px;
+  z-index: 1;
+}
+
+.contact-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 12, 16, 0.85);
+  z-index: 0;
+}
+
+.contact-hero h1,
+.contact-hero p {
+  position: relative;
+  z-index: 1;
+}
+
+.contact-hero h1 {
+  font-size: 2.8rem;
+  color: #00b4d8;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.contact-hero p {
+  max-width: 700px;
+  margin: 0 auto;
+  color: #bbb;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.contact-body {
+  background: linear-gradient(135deg, #0b0c10 0%, #10131a 100%);
+  padding: 100px 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.contact-intro {
+  text-align: center;
+  max-width: 800px;
+}
+
+.contact-intro h2 {
+  color: #00b4d8;
+  margin-bottom: 12px;
+  font-size: 1.8rem;
+}
+
+.contact-intro p {
+  color: #aaa;
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+.contact-info {
+  background: rgba(31, 40, 51, 0.9);
+  border: 1px solid #00b4d8;
+  border-radius: 12px;
+  padding: 40px 50px;
+  width: 100%;
+  max-width: 900px;
+  color: #eaeaea;
+  box-shadow: 0 0 18px rgba(0, 180, 216, 0.12);
+  backdrop-filter: blur(6px);
+}
+
+.contact-info h3 {
+  color: #00b4d8;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(0, 180, 216, 0.12);
+  padding-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.contact-info p {
+  margin: 8px 0;
+  color: #ccc;
+  font-size: 1rem;
+}
+
+.contact-info a {
+  color: #00b4d8;
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .contact-body {
+    padding: 60px 6%;
+  }
+
+  .contact-info {
+    padding: 28px;
+  }
+
+  .contact-hero h1 {
+    font-size: 2.2rem;
+  }
+}
+
+/* auth forms - moved from login.html & signup.html */
+.heading {
+  text-align: center;
+  color: #00b4d8;
+}
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* center within viewport while leaving space for the fixed header (header height = 80px) */
+  min-height: calc(100vh - 80px);
+  padding-top: 0;
+}
+
+.auth-form {
+  background: #1f2833;
+  padding: 40px;
+  border-radius: 10px;
+  border: 1px solid #00b4d8;
+  width: 100%;
+  max-width: 400px;
+  color: #fff;
+}
+
+.auth-form h2 {
+  text-align: center;
+  color: #00b4d8;
+  margin-bottom: 25px;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 14px;
+  margin: 12px 0;
+  border: none;
+  border-radius: 6px;
+  background: #0b0c10;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.auth-form button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  background: #00b4d8;
+  color: #000;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s ease;
+}
+
+.auth-form button:hover {
+  background: #00e0ff;
+}
+
+.auth-form p {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 0.95rem;
+  color: #bbb;
+}
+
+.auth-form p a {
+  color: #00b4d8;
+  text-decoration: none;
+}
+
+/* Make auth forms shorter and narrower on small phones */
+@media (max-width: 480px) {
+  .auth-container {
+    /* on small phones use the mobile header height (70px) to calculate centering */
+    min-height: calc(100vh - 70px);
+    padding-top: 0;
+  }
+
+  .auth-form {
+    max-width: 320px;
+    /* narrower form */
+    padding: 18px;
+    /* reduce internal padding */
+    border-radius: 8px;
+  }
+
+  .auth-form h2 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+  }
+
+  .auth-form input {
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+
+  .auth-form button {
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  .auth-form p {
+    font-size: 0.9rem;
+  }
+}
+
+/* products.html / lessons page - floating elements & lesson cards */
+.floating-elements {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.float {
+  position: absolute;
+  width: 2px;
+  height: 200px;
+  background: linear-gradient(180deg, rgba(0, 180, 216, 0) 0%, rgba(0, 180, 216, 0.95) 50%, rgba(0, 180, 216, 0) 100%);
+  opacity: 0.2;
+  animation: floatMove 12s linear infinite;
+}
+
+@keyframes floatMove {
+  from {
+    transform: translateY(-200px);
+    opacity: 0.3;
+  }
+
+  to {
+    transform: translateY(100vh);
+    opacity: 0.6;
+  }
+}
+
+.lessons-hero {
+  /* ensure hero content sits below the fixed header (header = 80px) */
+  /* increased vertical spacing so title & subtitle have more margin */
+  padding: calc(80px + 64px) 0 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(11, 12, 16, 0.92) 0%, rgba(31, 40, 51, 0.6) 100%);
+  color: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+.lessons-hero h1 {
+  font-size: 2.2rem;
+  color: #00d0ff;
+  letter-spacing: 0.2px;
+  margin: 0;
+  font-weight: 700;
+}
+
+.lessons-hero p {
+  color: #cfd8dc;
+  font-size: 1rem;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* subtle decorative underline below the heading */
+.lessons-hero h1::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 3px;
+  background: linear-gradient(90deg, #00d0ff, #3dd9ff);
+  margin: 10px auto 0;
+  border-radius: 3px;
+  opacity: 0.95;
+}
+
+.lessons-section {
+  background: #10131a;
+  /* reserve remaining viewport space so section fits without vertical scroll */
+  min-height: calc(100vh - 80px - 100px);
+  padding: 28px 0 36px;
+  /* more top/bottom breathing room */
+  text-align: center;
+  z-index: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* stack heading above cards */
+  align-items: center;
+  justify-content: flex-start;
+  /* place heading at the top of the section */
+  gap: 22px;
+}
+
+.lessons-section h2 {
+  color: #00d0ff;
+  font-size: 2.4rem;
+  margin: 8px 0 12px;
+  align-self: center;
+}
+
+.lessons-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(260px, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 28px 24px;
+  width: 92%;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-items: center;
+  align-items: stretch;
+  /* ensure grid children stretch to equal height */
+  padding: 8px 12px;
+}
+
+.lessons-grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.lessons-grid::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+}
+
+.lesson-card {
+  background: linear-gradient(180deg, rgba(31, 40, 51, 0.85), rgba(18, 22, 26, 0.9));
+  border: 1px solid rgba(0, 180, 216, 0.12);
+  border-radius: 14px;
+  padding: 20px;
+  color: #eaeaea;
+  text-align: left;
+  transition: transform 0.28s cubic-bezier(.2, .9, .3, 1), box-shadow 0.28s ease;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 360px;
+  box-shadow: 0 6px 18px rgba(2, 8, 12, 0.45);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* keep title and description together at top */
+  gap: 12px;
+  /* consistent spacing between elements */
+  height: 320px;
+  /* uniform height for all cards on desktop */
+}
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.card-link:focus {
+  outline: 3px solid rgba(0, 208, 255, 0.18);
+  outline-offset: 4px;
+  border-radius: 10px;
+}
+
+.lesson-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.00), rgba(255, 255, 255, 0.01));
+  pointer-events: none;
+}
+
+.lesson-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 18px 36px rgba(0, 180, 216, 0.12);
+}
+
+.lesson-card h3 {
+  color: #7ee8ff;
+  font-size: 1.15rem;
+  margin: 0;
+}
+
+.lesson-card p {
+  color: #c4cbd0;
+  line-height: 1.5;
+  font-size: 0.98rem;
+  margin: 0;
+}
+
+.lesson-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 180, 216, 0.15) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.lesson-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 20px rgba(0, 180, 216, 0.3);
+}
+
+.lesson-card:hover::before {
+  opacity: 1;
+}
+
+.lesson-card h3 {
+  color: #00b4d8;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.lesson-card p {
+  color: #bbb;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.lesson-card a {
+  display: inline-block;
+  margin-top: 15px;
+  color: #00b4d8;
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid transparent;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.lesson-card a:hover {
+  color: #fff;
+  border-color: #00b4d8;
+}
+
+/* Responsive: stack cards vertically on smaller screens and shrink spacing so content fits */
+@media (max-width: 900px) {
+
+  /* on tablets reduce the extra header offset (mobile header = 70px) */
+  .lessons-hero {
+    padding: calc(70px + 40px) 0 20px;
+  }
+
+  .lessons-hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .lessons-section {
+    min-height: auto;
+    padding: 18px 0;
+  }
+
+  /* switch grid to 2 columns on medium screens */
+  .lessons-grid {
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .lesson-card {
+    padding: 16px;
+    max-width: 680px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .lessons-hero {
+    padding: calc(70px + 28px) 0 12px;
+  }
+
+  .lessons-hero h1 {
+    font-size: 1.3rem;
+  }
+
+  .lessons-section {
+    padding: 12px 0;
+  }
+
+  .lessons-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .lesson-card {
+    padding: 12px;
+    height: auto;
+  }
+
+  .lesson-card h3 {
+    font-size: 1rem;
+  }
+
+  .lesson-card p {
+    font-size: 0.92rem;
+    line-height: 1.4;
+  }
+}
+
+/* FOOTER */
+footer {
+  background: #0b0c10;
+  color: #777;
+  text-align: center;
+  padding: 25px 0;
+  border-top: 1px solid #1f2833;
+}
