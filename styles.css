@@ -890,11 +890,11 @@ body {
 
   /* on tablets reduce the extra header offset (mobile header = 70px) */
   .lessons-hero {
-    padding: calc(70px + 40px) 0 20px;
+    padding: calc(0px + 40px) 0 20px;
   }
 
   .lessons-hero h1 {
-    font-size: 1.6rem;
+    font-size: 2.2rem;
   }
 
   .lessons-section {
