@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <link rel="icon" href="/sahiko.org/assets/android-chrome-512x512.png" type="image/x-icon">
+  <link rel="icon" href="/assets/android-chrome-512x512.png" type="image/x-icon">
   <title>Lessons | Sahiko Community</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
 
   <!-- Floating cyber lines -->
@@ -15,10 +16,16 @@
   <!-- NAVBAR -->
   <header class="navbar">
     <div class="container nav-inner">
-  <div class="logo">
-   <a href="index.html"><img src="/sahiko.org/assets/sahiko-removebg-preview.png" alt="Community Logo" class="logo-img" width="100" height="100" /></a>
-  </div>
-      <button class="nav-toggle" aria-label="Toggle navigation"><span class="hamburger"></span></button>
+      <div class="logo">
+        <a href="index.html">
+          <img src="/assets/sahiko-removebg-preview.png" alt="Community Logo" class="logo-img" width="100" height="100" />
+        </a>
+      </div>
+
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span class="hamburger"></span>
+      </button>
+
       <nav class="nav-links">
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -27,6 +34,7 @@
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
+
       <div class="nav-auth">
         <a href="login.html" class="btn login-btn">Login</a>
         <a href="signup.html" class="btn primary">Sign Up</a>
@@ -34,20 +42,24 @@
     </div>
   </header>
 
-  <!-- LESSONS HERO -->
-  <section class="lessons-hero">
-     <h1 class="hero-title">
-        <span style="color: white;">Master</span> <span>Cybersecurity Skills</span>
+  <!-- MAIN CONTENT -->
+  <main>
+
+    <!-- HERO -->
+    <section class="lessons-hero">
+      <h1 class="hero-title">
+        <span style="color:#fff;">Master</span> <span>Cybersecurity Skills</span>
       </h1>
       <p data-animate class="delay-1">
         Explore interactive products crafted for students, defenders, and future professionals.
       </p>
-  </section>
+    </section>
 
-  <!-- LESSONS SECTION -->
-  <section class="lessons-section">
-    <h2>Available Products</h2>
-    <div class="container">
+    <!-- PRODUCTS -->
+    <section class="lessons-section">
+      <h2>Available Products</h2>
+
+       <div class="container">
       <div class="lessons-grid" role="list">
 
       <a class="card-link" href="https://quizerai.onrender.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Quizer in a new tab" role="listitem">
@@ -85,19 +97,21 @@
       <a class="card-link" href="https://github.com/s4sahiko/Smart-Ticket-Classifier-3.0" style="text-decoration: none; color: inherit;" target="_blank" rel="noopener noreferrer" aria-label="Open Quizer in a new tab">
        <div class="lesson-card" data-animate class="delay-3">
           <h3>1. Smart Ticket Classifier</h3>
-          <p>Ai-Ticket-Classifier-3.0 is a machine learning and NLP-based system that automates the classification of customer support tickets. It preprocess ticket data, trains models, and categorizes incoming tickets into predefined categories, and shows real time recommended solutions. </p>
+          <p>Ai-Ticket-Classifier-3.0 is a machine learning and NLP-based system that automates the classification of customer support tickets. It preprocess ticket data, trains models, and categorizes incoming tickets into predefined categories.</p>
         </div>
       </a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+  </main>
 
   <!-- FOOTER -->
   <footer>
     © 2025 Sahiko.Org | Empowering Future Cyber Experts
   </footer>
+
   <script>
-    // Create floating lines dynamically
     const container = document.getElementById('floating-elements');
     for (let i = 0; i < 20; i++) {
       const line = document.createElement('div');

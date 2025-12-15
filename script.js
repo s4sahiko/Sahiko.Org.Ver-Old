@@ -84,3 +84,32 @@ window.addEventListener("scroll", () => {
     el.style.transform = `translateY(${scrolled * 0.04}px)`;
   });
 });
+
+
+const sections = document.querySelectorAll("section");
+
+const focusObserver = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      entry.target.classList.toggle("dim", !entry.isIntersecting);
+    });
+  },
+  { threshold: 0.4 }
+);
+
+sections.forEach(section => focusObserver.observe(section));
+
+//header up
+let lastScroll = 0;
+const navbar = document.querySelector(".navbar");
+
+window.addEventListener("scroll", () => {
+  const currentScroll = window.scrollY;
+  navbar.style.transform =
+    currentScroll > lastScroll && currentScroll > 100
+      ? "translateY(-100%)"
+      : "translateY(0)";
+  lastScroll = currentScroll;
+});
+
+
