@@ -211,8 +211,8 @@ body {
 
 /* Small helpers */
 .container {
-  padding-left: 8px;
-  padding-right: 8px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .nav-links ul {
