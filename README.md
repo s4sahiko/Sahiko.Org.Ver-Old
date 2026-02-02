@@ -25,6 +25,6 @@ This is an ongoing project, and content may change as updates and improvements a
 
 ## 🙌 Author
 
-Maintained by **Sahiko**
+older version of **sahiko.pages.dev**
 
  
